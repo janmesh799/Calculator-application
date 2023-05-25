@@ -7,4 +7,5 @@ router.post('/addcalculation', fetchUser, require('./calculation/addCalculation.
 
 router.delete('/deletecalculation',fetchUser, require('./calculation/deleteCalculation.js'))
 
+router.get('/getallCalculations',fetchUser, require('./calculation/getAllCalculations.js'))
 module.exports = router;
