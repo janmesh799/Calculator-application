@@ -1,0 +1,10 @@
+const express = require('express')
+const { body } = require('express-validator')
+
+const router = express.Router()
+
+router.post('/createuser', body('email').isEmail(), body('password').isStrongPassword(), require('./auth/CreateUser'))
+
+router.post('/loginuser', body('email').isEmail(),body('password').isStrongPassword(), require('./auth/loginUser'))
+
+module.exports = router;
