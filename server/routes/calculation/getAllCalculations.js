@@ -1,3 +1,4 @@
+const Calculation = require('../../Models/CalculationSchema');
 const User = require('../../Models/UserSchema')
 
 const getAllCalculations = async (req, res) => {
@@ -9,7 +10,12 @@ const getAllCalculations = async (req, res) => {
             ErrorCode = 404;
             throw new Error("User Not found");
         }
-        res.status(200).json({ success: true, calculations: isUserExists.calculations });
+        let calc = [];
+        for(let i =0;i<isUserExists.calculations.length;i++){
+            let currCalc = await Calculation.findById(isUserExists.calculations[i]);
+            calc.push(currCalc);
+        }
+        res.status(200).json({ success: true, calculations: calc });
     } catch (err) {
         res.status(ErrorCode || 500).json({ success: false, message: "Internal Server Error", error: err.message })
     }

@@ -19,7 +19,7 @@ const addCalculation = async (req, res) => {
                 isUserExists
                     .save()
                     .then(() => {
-                        res.status(200).json({ success: true, message: "Calculation Saved Successfully" });
+                        res.status(200).json({ success: true, message: "Calculation Saved Successfully" , savedCalculation:calc});
                     }).catch(err => {
                         throw new Error("Calculation sync with user failed " + err.message);
                     })

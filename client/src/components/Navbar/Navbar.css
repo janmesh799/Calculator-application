@@ -61,6 +61,7 @@
         width:100vw;
         text-align: center;
         border: none;
+        border-radius: 0;
         background-color: #004D9B;
         color: white;
         font-size: 1.25rem;

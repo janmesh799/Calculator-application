@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from "react-router-dom"
 import { useDispatch, useSelector } from 'react-redux'
-import './Login.css'
-import { login, setErrorNull } from '../../store/auth/authSlice'
+import './Signup.css'
+import {  setErrorNull, signup } from '../../store/auth/authSlice'
 import { toast } from 'react-toastify'
 
-const Login = () => {
+const Signup = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { isLoggedIn, isError, errorMessage, user, authToken } = useSelector(state => state.auth);
   const [userData, setUserData] = useState({
+    name: "",
     email: "",
     password: ""
 
@@ -20,7 +21,7 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault()
     // alert(JSON.stringify(userData))
-    dispatch(login(userData))
+    dispatch(signup(userData))
   }
   useEffect(() => {
     if (isLoggedIn) {
@@ -36,15 +37,16 @@ const Login = () => {
   }, [isLoggedIn, isError, errorMessage, user, authToken, navigate, dispatch])
   return (
     <div>
-      <form onSubmit={handleSubmit} className='login-form'>
-        <span>Login</span>
-        <input onChange={onChangeHandler} className='login-form-input' name='email' type='email' placeholder='email' />
-        <input onChange={onChangeHandler} className='login-form-input' name='password' type='password' placeholder='password' />
-        <button onClick={handleSubmit} type='submit' className='login-form-submit-btn'> Login</button>
-        <p>Don't have an account <Link to='/signup'>create Account</Link> </p>
+      <form onSubmit={handleSubmit} className='signup-form'>
+        <span>Signup</span>
+        <input onChange={onChangeHandler} className='signup-form-input' name='name' type='text' placeholder='Name' />
+        <input onChange={onChangeHandler} className='signup-form-input' name='email' type='email' placeholder='email' />
+        <input onChange={onChangeHandler} className='signup-form-input' name='password' type='password' placeholder='password' />
+        <button onClick={handleSubmit} type='submit' className='signup-form-submit-btn'> Login</button>
+        <p> have an account <Link to='/login'>Login</Link> </p>
       </form>
     </div>
   )
 }
 
-export default Login
+export default Signup
