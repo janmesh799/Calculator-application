@@ -1,8 +1,8 @@
 import axios from 'axios'
 
 
-const API_URL = 'http://localhost:5000/api/calculation'
-// const API_URL = 'https://pro-profile.vercel.app/api/auth'
+// const API_URL = 'http://localhost:5000/api/calculation'
+const API_URL = 'https://vercel.com/janmesh799/calculator-backend/api/calculation'
 
 //addHistory
 const addCalculation = async ({calculation,authToken}) => {
