@@ -8,14 +8,22 @@ const HistoryComponent = () => {
   const { authToken } = useSelector(state => state.auth);
   const { history } = useSelector(state => state.calculation);
   const onDelete = (id) => {
-    dispatch(deletecalculation({id,authToken}));
+    dispatch(deletecalculation({ id, authToken }));
   }
   useEffect(() => {
     dispatch(getAllCalculations(authToken));
   }, [authToken, dispatch])
   return (
-    <div className="history">
-      <h2>History</h2>
+    <div id="history" className="history">
+      <h2 style={{ fontStyle: "monospace" }} >History</h2>
+      <div>
+        <button className="clear-history-btn" >
+          Clear
+        </button>
+        <button onClick={() => { document.getElementById("history").style.display = "none" }} className="hide-history-btn" >
+          Hide History
+        </button>
+      </div>
       {history.length > 0 ? (
         <ul>
           {history.map((item, index) => (

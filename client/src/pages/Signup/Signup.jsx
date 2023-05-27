@@ -43,7 +43,7 @@ const Signup = () => {
         <input onChange={onChangeHandler} className='signup-form-input' name='email' type='email' placeholder='email' />
         <input onChange={onChangeHandler} className='signup-form-input' name='password' type='password' placeholder='password' />
         <button onClick={handleSubmit} type='submit' className='signup-form-submit-btn'> Login</button>
-        <p> have an account <Link to='/login'>Login</Link> </p>
+        <p> have an account <Link to='/login'>Signup</Link> </p>
       </form>
     </div>
   )
