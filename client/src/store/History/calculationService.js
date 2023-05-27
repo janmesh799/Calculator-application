@@ -37,6 +37,7 @@ const getAllCalculations = async (authToken) => {
     }
 }
 
+//delete all calculations
 const deleteCalculation = async({id, authToken}) =>{
     try {
         const config = {

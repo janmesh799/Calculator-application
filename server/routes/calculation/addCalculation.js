@@ -4,13 +4,20 @@ const User = require("../../Models/UserSchema");
 const addCalculation = async (req, res) => {
     let ErrorCode = null;
     try {
+        //extracting the userId
         const userId = req.user.userId;
+
+        //finding user
         const isUserExists = await User.findById(userId);
         if (!isUserExists) {
             ErrorCode = 404;
             throw new Error("No user found")
         }
-        const calculation = { expression: req.body.expression, result: req.body.result, owner: isUserExists };
+
+        //extracting calculation
+        const calculation = { expression: req.body.expression, result: req.body.result, owner: isUserExists };44
+
+        //saving new calculation
         const newCalculation = new Calculation(calculation);
         await newCalculation
             .save()
@@ -28,6 +35,8 @@ const addCalculation = async (req, res) => {
             })
 
     } catch (err) {
+        
+        //sending errorcode and erro message if there is any
         res.status(ErrorCode || 500).json({ success: false, message: "Internal Server Error", error: err.message })
     }
 }
